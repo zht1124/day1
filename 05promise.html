@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body></body>
+<!-- <script src=""></script> -->
+<script>
+    // {
+    //     // promise  承诺
+    //     // 买笔----》写作业----》交作业
+    //     // 买笔
+    //     function buy(){
+    //         console.log("开始买笔")
+    //         return new Promise((resolve,reject)=>{
+    //             setTimeout(()=>{
+    //                 console.log("买到了笔")
+    //                 resolve("写英语")
+    //             },1000)
+    //         })
+    //     }
+    //     // 写作业
+    //     function write(data){
+    //         console.log("开始"+data+"作业")
+    //         return new Promise((resolve,reject)=>{
+    //             setTimeout(()=>{
+    //                 console.log("写完作业")
+    //                 resolve("英语作业本")
+    //             },1000)
+    //         })
+    //     }
+    //     // 上交作业
+    //     function out(data){
+    //         console.log("开始上交"+data);
+    //         return new Promise((resolve,reject)=>{
+    //             setTimeout(()=>{
+    //                 console.log("上交完毕");
+    //                 resolve("该同学很优秀")
+    //             },1000)
+    //         })
+    //     }
+    //     buy().then(function(data){
+    //         console.log(data);
+    //         return write(data)
+    //     }).then(function(data1){
+    //         console.log(data1);
+    //         return out(data1)
+    //     }).then(function(data2){
+    //         console.log(data2);
+    //     })
+    // }
+
+    // {
+    //   // reject()回调函数
+    //   function rebuy() {
+    //     console.log("开始买笔");
+    //     return new Promise((resolve, reject) => {
+    //       setTimeout(() => {
+    //         console.log("没买到笔");
+    //         // 判断条件
+    //         // resolve("买到笔了")
+    //         reject("钱没带够");
+    //       }, 3000);
+    //     });
+    //   }
+
+    //   function rework(data) {
+    //     console.log("开始写作业：" + data);
+    //     var p = new Promise(function (resolve, reject) {
+    //       setTimeout(function () {
+    //         console.log("写完作业");
+    //         resolve("作业本");
+    //       }, 1000);
+    //     });
+    //     return p;
+    //   }
+    //   rebuy().then(
+    //     function (res) {
+    //         return rework(res)
+    //     },
+    //     function (data) {
+    //       console.log(data);
+    //     }
+    //   ).then(function(data){
+    //       console.log(data);
+    //   })
+    // }
+
+    {
+        function rebuy() {
+            console.log("开始买笔");
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log("没买到笔");
+                    resolve("买到笔了");
+                }, 3000);
+            });
+        }
+        rebuy()
+            .then(function (data) {
+                throw new Error("虽然买到了笔，但是没油")
+                console.log(data);
+            })
+            .catch(function (data) {
+                console.log(data);
+            }).finally(() => {
+                console.log("不管成功失败，我就玩自己的");
+            })
+    }
+</script>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body></body>
+<script src="./jquery-3.3.1.min.js"></script>
+<script>
+    // {
+    //     // c->a->b
+    //     $.ajax({
+    //         method: 'get',
+    //         url: './c.html',
+    //         success(res) {
+    //             console.log(res);
+    //         }
+    //     })
+    //     $.ajax({
+    //         method: 'get',
+    //         url: './a.html',
+    //         success(res) {
+    //             console.log(res);
+    //         }
+    //     })
+    //     $.ajax({
+    //         method: 'get',
+    //         url: './b.html',
+    //         success(res) {
+    //             console.log(res);
+    //         }
+    //     })
+    // }
+
+    // {
+    //     $.ajax({
+    //         method: "get",
+    //         url: "./c.html",
+    //         // 读取成功的回调函数中
+    //         success(res) {
+    //             console.log(res);
+    //             $.ajax({
+    //                 method: "get",
+    //                 url: "./a.html",
+    //                 success(res) {
+    //                     console.log(res);
+    //                     $.ajax({
+    //                         method: "get",
+    //                         url: "./b.html",
+    //                         success(res) {
+    //                             console.log(res);
+    //                         },
+    //                     });
+    //                 },
+    //             });
+    //         },
+    //     });
+    // }
+
+    {
+        // 封装一个读取文件的方法
+        function readFile(url) {
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    method: "get",
+                    url,
+                    success(res) {
+                        resolve(res);
+                    },
+                    error(data) {
+                        reject(data);
+                    },
+                });
+            });
+        }
+
+        // promise()  读取三个文件  c->b->a
+        readFile("./c.html").then(function(data){
+            console.log(data);
+            return readFile("./b.html")
+        }).then(function(data1){
+            console.log(data1);
+            return readFile("./a.html")
+        }).then(function(data2){
+            console.log(data2);
+        })
+        // let const promise  js高阶  面向对象 
+
+    }
+    {
+        readFile('./c.html').then(function(data){
+            console.log(data);
+            return readFile('./b.html')
+        }).then(function(data1){
+            console.log(data1);
+            return readFile('./a.html')
+        }).then(function(data2){
+            console.log(data2);
+        })
+    }
+    {
+        
+    }
+</script>
+
+</html>

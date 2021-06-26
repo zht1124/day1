@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body></body>
+<script src="./jquery-3.3.1.min.js"></script>
+<script>
+    // 首页渲染的时候  会出现这个概念  尤其是电商
+    // {
+    //     // 读取文件的方法
+    //     function readFile(url) {
+    //         return new Promise((resolve, reject) => {
+    //             $.ajax({
+    //                 method: "get",
+    //                 url,
+    //                 success(res) {
+    //                     resolve(res);
+    //                 },
+    //                 error(data) {
+    //                     reject(data);
+    //                 },
+    //             });
+    //         });
+    //     }
+
+    //     // a  b  c   文件
+    //     Promise.all([
+    //         readFile("./a.html"),
+    //         readFile("./b.html"),
+    //         readFile("./c.html"),
+    //     ]).then((res) => {
+    //         console.log(res);
+    //     });
+
+    //     // 谁快就渲染谁
+
+    //     Promise.race([
+    //         readFile("./a.html"),
+    //         readFile("./b.html"),
+    //         readFile("./c.html"),
+    //     ]).then((res) => {
+    //         console.log(res);
+    //     });
+    // }
+
+
+    // IT 男  女
+
+    // async  ajax =   async  javescript and Xml
+
+    // es7提供的 异步函数
+    // 完成异步操作
+
+    // async function test() { }
+
+    {
+        function* helloWorldGenerator() {
+            yield "hello";
+            yield "world";
+            // 套用
+            function* test(){
+                yield "a";
+                return;
+            }
+            return "ending";
+        }
+
+        var hw = helloWorldGenerator();
+        console.log(hw.next())
+        console.log(hw.next())
+        console.log(hw.next())
+        console.log(hw.next())
+        // {value:'',done:""}  itarator 
+
+    }
+</script>
+
+</html>

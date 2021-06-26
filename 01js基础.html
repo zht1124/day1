@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body></body>
+  <script>
+    {
+      // es2015的基础知识以及面试题
+      // js有几种数据类型?
+      // 简单数据类型和引用数据类型
+      // bol  number  string null undefined NaN   和  Object
+      // js的运行机制
+      // 单线程  先执行同步任务  在执行异步任务   looper(事件循环机制)
+      // js回调函数
+    }
+    {
+      // js回调函数
+      // 是因为该动作需要两步
+      // $(".box").slideDown(function(){
+      //     console.log("我是box，我被下拉了")
+      // })
+      // 关键字 声明   声明有变量提升
+      f1();
+      function f1() {
+        console.log("我是f1函数");
+      }
+      // 表达式 声明   该函数声明没有变量提升
+      // f2();
+      var f2 = function () {
+        console.log("我是f2函数");
+      };
+      // f3();//函数调用
+
+      // 函数已参数的形式放在另外一个函数中，就形成了回调函数
+      function f(callback) {
+        callback();
+      }
+      // 庄志鹏 小女朋友吃饭  吃完饭之后  你回宿舍把  回到宿舍发个消息
+      function gohome(phone) {
+        console.log("庄同学正在吃饭");
+        // 3秒之后到宿舍
+        setTimeout(function () {
+          phone("庄同学，我到宿舍了");
+        }, 3000);
+      }
+      function fn(data) {
+        console.log(data);
+      }
+
+      gohome(fn);
+
+      // 闭包
+      // 函数作为返回值返回的函数即为闭包  垃圾回收机制
+      // 闭包的优缺点:
+      // 优点:避免全局变量污染，全局可以访问局部
+      // 缺点:内存泄漏
+      function bi() {
+        var n = 999;
+        return function () {
+            ++n;
+          console.log(n);
+        };
+      }
+      var k=bi()    //方法体
+      console.log(k)
+      k();
+
+
+    }
+
+    {
+        // 闭包的优缺点:
+        function f(){
+            var n=100;
+            n++;
+            console.log(n);
+        }
+        f()//101
+        f()//101
+        // 垃圾回收机制
+
+        function fn(){
+            let n=100;
+            return function(){
+                n++;
+                console.log(n)
+            }
+        }
+
+        let k=fn();
+        k();
+        k();
+    }
+  </script>
+</html>

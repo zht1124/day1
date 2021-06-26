@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    {
+        // 继承
+        // super
+        class Father {
+            // 属性
+            constructor(){
+                this.money="12345678"
+            }
+            // 方法
+            getmoney(){
+                console.log("包工头")
+            }
+        }
+        class Son extends Father {
+        //     constructor(){ 
+        //         // 构造父类
+        //         // super()
+        //         this.money="99999999"
+        //         this.tech="前端开发"
+        //     }
+               constructor(...arg){
+                   super(...arg)
+               }
+        }
+        let s=new Son()
+        console.log(s.money)
+        s.getmoney()
+    }
+    {
+        let emperor1={
+            name:'秦始皇'
+        }
+        let emperor2={
+            name:'汉高祖'
+        }
+        let emperor3={
+            name:'曹操'
+        }
+        Object.setPrototypeOf(emperor3,emperor2)
+        Object.setPrototypeOf(emperor2,emperor1)
+    }
+
+    {
+        // super关键字
+        // super关键字当做函数时，代表父类的构造函数
+        // 作为函数时，super()只能用在子类的构造函数之中，用在其他地方就会报错。
+        class A {
+
+        }
+        class B extends A {
+            // constructor(){
+                
+            // }
+            sayHi(){
+                // super()
+            }
+        }
+        let b = new B()
+        b.sayHi()
+    }
+    {
+        // super作为对象时，在普通方法中，指向父类的原型对象
+        // let obj={
+        //     name:'庄',
+        //     age:'19',
+        //     hobbie:'好色'
+        // }
+        // obj.name;
+        // obj["name"]
+
+        class A {
+            // 属性 name
+            constructor(){
+                this.name="李阳"
+            }
+            // 原型对象
+            p(){
+                return "潘自庆"
+            }
+        }
+        A.prototype.name="庄志鹏"
+        class B extends A {
+            constructor(){
+                super()
+                // 是不是指向原型对象
+                console.log(super.name)
+            }
+        }
+        let b=new B();
+        // console.log(b)
+    }
+</script>
+</html>

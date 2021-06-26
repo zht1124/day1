@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body></body>
+<script>
+    {
+        // es2015中 面向对象
+        // 构造函数
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            this.sayHi = function () {
+                console.log(this.name);
+            };
+        }
+        // 原型对象
+        Person.prototype.sayHello = function () {
+            console.log("hello world");
+        };
+        let p = new Person("邵老师", 29);
+        p.sayHi();
+        // class  语法糖   react
+        class Cat {
+            // 属性
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+                // this.hite=this.hite.bind(this)
+            }
+            // 方法
+            // sayHi(){
+            //     console.log(this,name);
+            // }
+            // hite(){
+            //     console.log("我叫"+this.name+"我会佛山无影脚");
+            // }
+        }
+        Cat.prototype.hite =function(){
+            console.log("我叫" + this.name + "我会佛山无影脚");
+        }
+        // Cat.prototype = {
+        //     sayHi() {
+        //         console.log(this.name);
+        //     },
+        //     hite() {
+        //         console.log("我叫" + this.name + "我会佛山无影脚");
+        //     },
+        // };
+        // Cat.prototype.constructor = Cat;
+        // new关键字去创建类
+        let c = new Cat("小潘", 2);
+        console.log(c);
+        c.hite()
+    }
+
+    {
+        // 类  Object
+        class Point { }
+        console.log(typeof Point);
+    }
+
+    {
+        class B {
+
+        }
+        let b=new B()
+        console.log(b)
+    }
+
+    {
+        class Point {
+            // 属性
+            constructor(){
+
+            }
+        }
+        Object.assign(Point.prototype,{
+            sayhi(){
+                console.log("hello");
+            }
+        })
+        let p=new Point()
+        p.sayhi()
+    }
+
+
+    {
+        // constructor  中的this默认指向  实例化对象
+        // this指向  继承的观念
+        class Foo {
+            constructor(){
+                return Object.create(null);//修改了this指向
+            }
+        }
+        let f=new Foo()
+        console.log(f instanceof Foo)
+    }
+
+    {
+        class Point {
+            constructor(name,age){
+                this.name=name;
+                this.age=age||29;
+            }
+            sayHello(){
+                console.log(this.name);
+            }
+        }
+        let p=new Point("潘自庆",19)
+        p.sayHello()
+        // 判断你的实例化对象是否含有你的属性和方法
+        // hasOwnProperty()
+        console.log(p.hasOwnProperty("name"))     // true
+        console.log(p.__proto__.hasOwnProperty("sayHello")) //false  
+        p.__proto__.sayHi=function(){
+            console.log("娃哈哈");
+        }
+        p.sayHi()
+    }
+    {
+        let m = new MyClass()
+        m.getClassName()
+        // 声明类的方式  表达式声明
+        let MyClass= class Me {
+            constructor(){
+
+            }
+            getClassName(){
+                console.log("wahah")
+            }
+        }
+    }
+</script>
+
+</html>

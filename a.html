@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    {
+        var date = new Date();
+        var year = date.getFullYear()
+        var month = date.getMonth()+1
+        var day = date.getDate()
+        var hours =date.getHours()
+        var m = date.getMinutes()
+        var s= date.getSeconds()
+    }
+    // {
+    //    //  f1() 正确
+    //  function f1(){
+    //      console.log('welcome f1');
+    //  }
+
+    // // f2() 保错
+    // var f2 = function(){
+    //     console.log('welcome f2');
+    // }
+    // f2()
+    // function f3(callback){
+    //     callback()
+    // }
+    // function gohome(phone){
+    //     console.log('吃饭');
+    //     setTimeout(function(){
+    //         phone('回家了')
+    //     },300);
+    // }
+    // function fn(data){
+    //     console.log(data);
+    // }
+    //  gohome(fn)
+    // }
+    {
+        // function f(){
+        //     var n=100;
+        //     n++;
+        //     console.log(n);
+        // }
+        // f()
+        // function fn(){
+        //     let m=100;
+        //     return function(){
+        //         m++
+        //         console.log(m);
+        //     }
+        // }
+        // let k = fn()
+        // k()
+
+        // console.log(k);
+    }
+    {
+        // let a= 10
+        // {console.log(a);}
+        // let a =29
+        // console.log(a);
+    }
+    // {
+    //     const pI =3.1415926;
+    //     pI = 3.6;
+    //     console.log(pI); //保错
+    //     let pI =3.1415926;
+    //     pI = 3.6;
+    //     console.log(pI); //3.6
+    // const arr = [1,2,3,4];
+    // arr[0] = 4;
+    // console.log(arr); //[4,2,3,4]
+    // }
+    // {
+    //     a =10 ;
+    //     console.log(a); //10
+
+    //     var f;
+    //     console.log(f);//undefined
+    //     let k ;
+    //     k=20;
+    //     console.log(k);
+    // }
+    // {
+    //     // 解构成功
+    //     let [a,b,c] = [1,2,3]
+    //     console.log(a,b,c);
+    //     let [x,[y]] = [1,[2]]
+    //     console.log(x,y);
+    //     // 结构不成功
+    //     let [m, , n] = [1,2,3];
+    //     console.log(m,n);
+    //     let [d,...z]= [1,2,34,4];
+    //     console.log(d,z);
+    // }
+    {
+        let [x = 6] = [];
+        console.log(x); //6
+        let [y = 6] = [undefined]
+        console.log(y);//6
+    }
+    {
+        let { x, y } = { x: 'shao', y: 'zhuang' };
+        console.log(x, y); //shao  zhuang
+        let { m: k } = { m: "李莹莹" }
+        console.log(k); //李莹莹
+        let { sin } = Math;
+        console.log(Math);
+        console.log(sin(45)); //0.8509035245341184
+        // let {x=3} = {};
+        // console.log(x); //报错
+        //    let [a,b,c,d,e] ='hello';
+        let { length: len } = 'hello';
+        console.log(len);
+    }
+    {
+        function f([x, y]) {
+            return x + y
+        }
+        console.log(f([1, 2])); //3
+        function move({ x = 0, y = 0 } = {}) {
+            return [x, y]
+        }
+        console.log(move());[0, 0]
+        console.log(move({ x: 4, y: 9 })); //[4,9]
+        console.log(move({ x: 3 })); //[3,0]
+    }
+    {
+        console.log('先执行这里');
+        setTimeout(() => {
+            console.log('执行啦')
+        }, 0);
+        console.log('先执行这里1');
+        setTimeout(() => {
+            console.log('执行啦1')
+        }, 1000);
+
+    }
+</script>
+
+</html>

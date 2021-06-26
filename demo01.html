@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body></body>
+<script>
+    {
+        // let p = new Promise((resolve, reject) => {
+        //     if (success) {
+        //         resolve(val);
+        //     } else {
+        //         reject(val);
+        //     }
+        // });
+    }
+
+    {
+        // function buy() {
+        //     console.log("开始买笔");
+        //     let p = new Promise((resolve, reject) => {
+        //         setTimeout(function () {
+        //             console.log("买了笔芯");
+        //             resolve("数学作业");
+        //         }, 1000);
+        //     });
+        //     return p;
+        // }
+
+        // function work(data) {
+        //     console.log("开始写作业：" + data);
+        //     let p = new Promise(function (resolve, reject) {
+        //         setTimeout(function () {
+        //             console.log("写完作业");
+        //             resolve("作业本");
+        //         }, 1000);
+        //     });
+        //     return p;
+        // }
+
+        // buy().then(function(data){
+        //     return work(data)
+        // }).then(function(data){
+        //     console.log(data)
+        // })
+    }
+
+
+    {
+        // 基本用法 
+        async function test(){
+           await "abc"
+        }
+        console.log(test())
+        test().then(function(data){
+            console.log(data);
+        })
+    }
+
+    {
+        let a=Object.create(null);
+        console.log(a);
+    }
+</script>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body></body>
+<script>
+    {
+        async function test() {
+            return await new Promise((resolve, reject) => {
+                resolve('成功了')
+            })
+        }
+        test().then((data) => {
+            console.log(data);
+        })
+    
+    }
+    {
+        async function test() {
+        return await new Promise((resolve,reject)=>{
+            resolve("成功了")
+        })
+        }
+        test().then((data)=>{
+            console.log(data);
+        })
+        
+        // test().then(function () { }, function (data) {
+        //     console.log(data);
+        // }).catch(function (data) {
+        //     console.log(data);
+        // })
+        // a1  a2  a3   等待   await
+        // console.log(test())
+    }
+
+    // {
+    //     function dice() {
+    //         return new Promise((resolve, reject) => {
+    //             let sino = parseInt(Math.random() * 6 + 1); //生成一个1~6之间的随机小数
+    //             setTimeout(() => {
+    //                 resolve(sino);
+    //             }, 2000);
+    //         });
+    //     }
+
+    //     async function test() {
+    //         let res = await dice();
+    //         console.log(res);
+    //     }
+
+    //     // test()
+    // }
+
+    // {
+    //     async function test() {
+    //         await new Promise();
+    //     }
+    //     // Promise()对象
+    // }
+    // axios的底层是promise
+    // async created(){
+    //     let res=await axios.get()
+    // class  语法糖  es6提供的
+    // }
+
+    // 开半天小程序
+
+    {
+        // 返回promise对象
+        // promise对象
+        async function test() {
+            // return await "123"
+            let res = await new Promise((resolve, reject) => {
+                // resolve("我是成功的回调函数")
+                reject("我是失败的回调函数")
+            })
+            return res;
+        }
+        // console.log(test())
+        test().then().catch(err => {
+            console.log(err);
+        })
+    }
+
+
+</script>
+
+</html>

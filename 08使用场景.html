@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body></body>
+<script src="./axios.js"></script>
+<script>
+    {
+        // 电话号 ---》 "省份"  ---》"市区"
+        // 定位  物流信息  省市区
+        // 山东省   济南市   青岛市  菏泽曹县  北上广曹
+        // 通过电话号找省份
+        function getProvince() {
+            return axios.get("./phone.json");
+        }
+        // 通过省份找市区
+        function getcity(province) {
+            return axios.get("./city.json", {
+                province,
+            });
+        }
+        var province = null;
+        // axios底层是promise  xhrhttprequest
+        // promise 去完成
+        // getProvince().then(res=>{
+        //     console.log(res);
+        //     let {data} =res;
+        //     console.log(data);
+        //     let phone="135"
+        //     province=data.filter(item=>{
+        //         return item.phone==phone
+        //     })
+        //     province=province[0].area;
+        //     // 省份---》市区
+        //     getcity().then(result=>{
+        //         console.log(result);
+        //         let arr=result.data.filter(item=>{
+        //             return item.province==province
+        //         })
+        //         console.log(arr);
+        //         arr[0].cities.map(item=>{
+        //             console.log(item);
+        //         })
+        //     })
+        // })
+        // es2017再次升级
+        async function getres() {
+            // 获取省份
+            let res = await getProvince();
+            console.log(res);
+            let { data } = res;
+            let phone = "135"
+            province = data.filter(item => {
+                return item.phone == phone
+            })
+            province = province[0].area;
+            // 获取市区
+            let result = await getcity();
+            let arr = result.data.filter(item => {
+                return item.province == province
+            })
+            console.log(arr);
+            arr[0].cities.map(item => {
+                console.log(item);
+            })
+        }
+        getres()
+    }
+</script>
+
+</html>
